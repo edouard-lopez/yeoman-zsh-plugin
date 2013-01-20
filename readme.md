@@ -51,24 +51,24 @@ This is a [Yeoman](http://yeoman.io/) plugin for [Oh My ZSH](https://github.com/
 2. You can also tab your way into the various commands with zsh autocomplete functions that comes with this plugin:
     - commond commands
 
-    ```
-    $ yeoman <tab>
-    build      -- Build an optimized version of your app, ready to deploy
-    init       -- Initialize and scaffold a new project using generator templates
-    install    -- Install a package from the client-side package registry
-    list       -- List the packages currently installed
-    lookup     -- Look up info on a particular package
-    search     -- Query the registry for matching package names
-    server     -- Launch a preview server which will begin watching for changes
-    test       -- Run a Mocha test harness in a headless PhantomJS
-    uninstall  -- Uninstall the package
-    update     -- Update a package to the latest version
-    ```
+        ```
+        $ yeoman <tab>
+        build      -- Build an optimized version of your app, ready to deploy
+        init       -- Initialize and scaffold a new project using generator templates
+        install    -- Install a package from the client-side package registry
+        list       -- List the packages currently installed
+        lookup     -- Look up info on a particular package
+        search     -- Query the registry for matching package names
+        server     -- Launch a preview server which will begin watching for changes
+        test       -- Run a Mocha test harness in a headless PhantomJS
+        uninstall  -- Uninstall the package
+        update     -- Update a package to the latest version
+        ```
     
     - common generators
     
-    ```
-    $ yeoman init
-    angular        bbb            ember          generator      quickstart   
-    backbone       chromeapp      ember-starter  mocha          testacular 
-    ```
+        ```
+        $ yeoman init <tab>
+        angular        bbb            ember          generator      quickstart   
+        backbone       chromeapp      ember-starter  mocha          testacular 
+        ```
