@@ -64,8 +64,8 @@ This is a [Yeoman](http://yeoman.io/) plugin for [Oh My ZSH](https://github.com/
         uninstall  -- Uninstall the package
         update     -- Update a package to the latest version
         ```
-    
     - common generators
+    
     
         ```
         $ yeoman init <tab>
