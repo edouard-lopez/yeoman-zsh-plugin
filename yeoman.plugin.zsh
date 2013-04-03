@@ -16,3 +16,16 @@ alias yml='bower list'
 alias yms='bower search'
 alias ymlu='bower lookup'
 
+# new alias for Yoeman >=1.0 (using 'grunt' and 'bower')
+alias grb='grunt build'
+alias grsv='grunt server'
+alias grsd='grunt server:dist'
+alias grst='grunt server:test'
+alias grt='grunt test'
+
+alias bwii='bower install'
+alias bwui='bower uninstall'
+alias bwu='bower update'
+alias bwl='bower list'
+alias bws='bower search'
+alias bwlu='bower lookup'
