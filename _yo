@@ -4,7 +4,7 @@
 # @description  yo zsh completion
 # @require        'yo' to be installed
 
-# place to store npm search results
+# File to store npm search results
 local generatorCache="$ZSH_CUSTOM/plugins/yeoman/npm-generator.cache"
 
 local state line context
@@ -14,7 +14,7 @@ local -A opt_args
 
 local -a arguments
 
-_arguments \
+arguments \
   '(--help)--help[show the help message and quit]' \
   '(--version)--version[show version information and quit]' \
   '*:: :->subcmds' && return 0
@@ -63,14 +63,10 @@ getGeneratorList() {
     echo "${arguments[@]}"
 }
 if (( CURRENT == 1 )); then
-  _describe -t commands "yo subcommand" _1st_arguments
+  _describe -t commands "yo generators" _arguments
   return
 fi
 
 
 # create a cache for the list of generator
 cacheGeneratorList
-case "$words[1]" in
-  init)
-    compadd generator angular backbone bbb chromeapp ember-starter ember mocha quickstart testacular
-esac
