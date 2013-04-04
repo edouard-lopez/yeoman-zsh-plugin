@@ -5,6 +5,11 @@
 # @require        'yo' to be installed
 
 
+local state line context
+# $opt_args is an associative array that contains command-line options like -d or -f
+# as its keys and the actual parameters to those options (if any) as its values
+local -A opt_args
+
 local -a arguments
     arguments=(
         generator-angular:'Yeoman generator for AngularJS'
