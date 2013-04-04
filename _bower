@@ -21,9 +21,6 @@ arguments=(
     '2:: :->subcmd' #
 )
 
-_arguments -C $arguments
-
-completeArgOne "$state" # manage completion for first argument
 
 # @description  manage completion for first argument
 # @param    $1|argLevel2  list of ${words[@]}
@@ -126,3 +123,8 @@ completeArgTwo() {
             ;;
         esac
 }
+
+
+_arguments -C $arguments
+
+completeArgOne "$state" # manage completion for first argument
