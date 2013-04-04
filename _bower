@@ -1,7 +1,8 @@
 #compdef bower
 #autoload
 
-
+# @description  bower zsh completion
+# @require        'bower' to be installed
 
 
 local state line context
