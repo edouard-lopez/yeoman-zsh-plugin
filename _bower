@@ -11,9 +11,8 @@ local -A opt_args
 
 local -a arguments
 arguments=(
-    '--help[show the help message and quit]'
     '--no-color[Do not print colors (available in all commands)]'
-    '--version[show version information and quit]'
+    '--help[Show the help message and quit]'
     # This describes how arguments (usually non-option arguments, those  not
     # beginning  with  - or +) are to be completed when neither of the first
     # two forms was provided.  Any number of arguments can be  completed  in
