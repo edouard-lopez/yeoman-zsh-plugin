@@ -31,11 +31,29 @@ _arguments \
   '(--version)--version[show version information and quit]' \
   '*:: :->subcmds' && return 0
 
+
+# @description run a NPM search in the background and store results in "$generatorCache"
+# @param    $1|$generatorCache  File to store npm search results
+# @return    void
+cacheGeneratorList() {
+    local generatorCache="$1"
+    local keywords=( yeoman generator )
+
+    rm "$generatorCache" # rm on plugin/zsh reload
+
+    for k in "${keywords[@]}"; do
+        npm search "$k" >> "$generatorCache"
+    done
+}
+
 if (( CURRENT == 1 )); then
   _describe -t commands "yo subcommand" _1st_arguments
   return
 fi
 
+
+# create a cache for the list of generator
+cacheGeneratorList
 case "$words[1]" in
   init)
     compadd generator angular backbone bbb chromeapp ember-starter ember mocha quickstart testacular
