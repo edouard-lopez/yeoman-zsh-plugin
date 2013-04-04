@@ -4,22 +4,20 @@
 # @description  yo zsh completion
 # @require        'yo' to be installed
 
-local -a _1st_arguments
-_1st_arguments=(
-  'init:Initialize and scaffold a new project using generator templates'
-  'build:Build an optimized version of your app, ready to deploy'
-  'server:Launch a preview server which will begin watching for changes'
-  'test:Run a Mocha test harness in a headless PhantomJS'
-  'install:Install a package from the client-side package registry'
-  'uninstall:Uninstall the package'
-  'update:Update a package to the latest version'
-  'list:List the packages currently installed'
-  'search:Query the registry for matching package names'
-  'lookup:Look up info on a particular package'
-)
 
-local expl
-local -a pkgs installed_pkgs
+local -a arguments
+    arguments=(
+        generator-angular:'Yeoman generator for AngularJS'
+        generator-backbone-amd:'generator-backbone-amd'
+        generator-bootstrap:'Yeoman generator for Twitter Bootstrap'
+        # chromeapp
+        # chrome-extension
+        ember:'Ember - JavaScript Application Framework'
+        # jasmine
+        generator-mocha:'Yeoman generator for Mocha'
+        generator-testacular:'Yeoman generator for Testacular'
+        generator-webapp:'Default Yeoman generator for scaffolding out a front-end web app'
+    )
 
 _arguments \
   '(--help)--help[show the help message and quit]' \
