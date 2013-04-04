@@ -4,6 +4,8 @@
 # @description  yo zsh completion
 # @require        'yo' to be installed
 
+# place to store npm search results
+local generatorCache="$ZSH_CUSTOM/plugins/yeoman/npm-generator.cache"
 
 local state line context
 # $opt_args is an associative array that contains command-line options like -d or -f
