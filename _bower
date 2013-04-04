@@ -1,0 +1,118 @@
+#compdef bower
+#autoload
+
+
+
+
+local state line context
+# $opt_args is an associative array that contains command-line options like -d or -f
+# as its keys and the actual parameters to those options (if any) as its values
+local -A opt_args
+
+local -a arguments
+arguments=(
+    '--help[show the help message and quit]'
+    '--no-color[Do not print colors (available in all commands)]'
+    '--version[show version information and quit]'
+    # This describes how arguments (usually non-option arguments, those  not
+    # beginning  with  - or +) are to be completed when neither of the first
+    # two forms was provided.  Any number of arguments can be  completed  in
+    # this fashion.
+    '1:: :->cmd' # help, install, list, ls, uninstall, update, link, lookup, info, init, register, search, cache-clean, completion
+    '2:: :->subcmd' #
+)
+
+_arguments -C $arguments
+
+case $state in
+   cmd)
+local -a cmds
+cmds=(
+        help:'Display the help'
+        install:'Installs a browser package locally into a components directory'
+        list:'Lists all packages'
+        ls:'Lists all packages'
+        uninstall:'Uninstalls a browser package locally from your components directory'
+        update:'Refreshes a package install'
+        link:'The link functionality allows developers to easily test their packages. Linking is a two-step process.'
+        lookup:'Looks up a package url by name'
+        info:'Version info and description of a particular package.'
+        init:'Creates a component.json file based on answers to questions'
+        register:'Register a package.'
+        search:'Finds all packages or a specific package.'
+        cache-clean:'Cleans all the bower cache or the specified packages cache'
+        completion:'Tab Completion for bower'
+)
+_describe -t commands "command" cmds
+;;
+subcmd)
+showArgsLevel2 "${words[@]}"
+;;
+esac
+
+
+if (( CURRENT == 1 )); then
+  _describe -t commands "bower subcommand" _arguments
+  return
+fi
+
+showArgsLevel2() {
+   local -a argLevel2
+   argLevel2=( "$@" )
+
+    case "$argLevel2[2]" in
+        help)
+            ;;
+        init)
+            local -a subcmds
+            subcmds=(
+            )
+            ;;
+        install)
+            local -a subcmds
+            subcmds=(
+                --save:'Save installed packages into the project s component.json dependencies' \
+                --save-dev:'Save installed packages into the project s component.json devDependencies' \
+                --force:'Force fetching remote resources even if a local copy exists on disk' \
+                --force-latest:'Force latest version on conflict' \
+                --production:'Do not install project devDependencies' \
+            )
+            _describe -t sub-commands "sub-command" subcmds
+            ;;
+        list|ls)
+            local -a subcmds
+            subcmds=(
+                --map:'Generates a deep dependency JSON source mapping' \
+                --paths:'Generates a simple JSON source mapping' \
+                --sources:'Generates list of source files in order of dependency' \
+                --offline:'Avoid checking for newer versions'
+            )
+            _describe -t sub-commands "sub-command" subcmds
+            ;;
+        uninstall|update)
+            local -a subcmds
+            subcmds=(
+                --save:'Updates dependencies entries in the project s component.json' \
+                --force:'Force fetching remote resources even if a local copy exists on disk' \
+                --force-latest:'Force latest version on conflict'
+            )
+            _describe -t sub-commands "sub-command" subcmds
+            ;;
+        link)
+            ;;
+        lookup)
+            ;;
+        info)
+            ;;
+        init)
+            ;;
+        register)
+            ;;
+        search)
+            ;;
+        cache-clean)
+            ;;
+        completion)
+            ;;
+        esac
+}
