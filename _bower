@@ -64,7 +64,10 @@ if (( CURRENT == 1 )); then
   return
 fi
 
-showArgsLevel2() {
+# @description  manage completion for second argument
+# @param    $1|argLevel2  list of ${words[@]}
+# @return    void
+completeArgTwo() {
    local -a argLevel2
    argLevel2=( "$@" )
 
