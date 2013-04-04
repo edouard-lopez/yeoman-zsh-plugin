@@ -13,18 +13,6 @@ local state line context
 local -A opt_args
 
 local -a arguments
-    arguments=(
-        generator-angular:'Yeoman generator for AngularJS'
-        generator-backbone-amd:'generator-backbone-amd'
-        generator-bootstrap:'Yeoman generator for Twitter Bootstrap'
-        # chromeapp
-        # chrome-extension
-        ember:'Ember - JavaScript Application Framework'
-        # jasmine
-        generator-mocha:'Yeoman generator for Mocha'
-        generator-testacular:'Yeoman generator for Testacular'
-        generator-webapp:'Default Yeoman generator for scaffolding out a front-end web app'
-    )
 
 _arguments \
   '(--help)--help[show the help message and quit]' \
@@ -46,6 +34,34 @@ cacheGeneratorList() {
     done
 }
 
+
+# @description get the list of generators. If cache is available use it, otherwise use default values
+# @param    $1|$generatorCache  File to store npm search results
+# @return    void
+getGeneratorList() {
+    local generatorCache="$1"
+    local arguments=()
+
+    if [[ -e "$generatorCache" ]]; then
+        while IFS=' ' read -r generator _ ; do
+            arguments+=("$generator");
+        done < "$generatorCache"
+    else
+        arguments=(
+            generator-angular:'Yeoman generator for AngularJS'
+            generator-backbone-amd:'generator-backbone-amd'
+            generator-bootstrap:'Yeoman generator for Twitter Bootstrap'
+            # chromeapp
+            # chrome-extension
+            ember:'Ember - JavaScript Application Framework'
+            # jasmine
+            generator-mocha:'Yeoman generator for Mocha'
+            generator-testacular:'Yeoman generator for Testacular'
+            generator-webapp:'Default Yeoman generator for scaffolding out a front-end web app'
+        )
+    fi
+    echo "${arguments[@]}"
+}
 if (( CURRENT == 1 )); then
   _describe -t commands "yo subcommand" _1st_arguments
   return
