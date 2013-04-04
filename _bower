@@ -24,32 +24,40 @@ arguments=(
 
 _arguments -C $arguments
 
-case $state in
-   cmd)
-local -a cmds
-cmds=(
-        help:'Display the help'
-        install:'Installs a browser package locally into a components directory'
-        list:'Lists all packages'
-        ls:'Lists all packages'
-        uninstall:'Uninstalls a browser package locally from your components directory'
-        update:'Refreshes a package install'
-        link:'The link functionality allows developers to easily test their packages. Linking is a two-step process.'
-        lookup:'Looks up a package url by name'
-        info:'Version info and description of a particular package.'
-        init:'Creates a component.json file based on answers to questions'
-        register:'Register a package.'
-        search:'Finds all packages or a specific package.'
-        cache-clean:'Cleans all the bower cache or the specified packages cache'
-        completion:'Tab Completion for bower'
-)
-_describe -t commands "command" cmds
-;;
-subcmd)
-showArgsLevel2 "${words[@]}"
-;;
-esac
+completeArgOne "$state" # manage completion for first argument
 
+# @description  manage completion for first argument
+# @param    $1|argLevel2  list of ${words[@]}
+# @return    void
+completeArgOne() {
+    local state="$1"
+    case $state in
+        cmd)
+            local -a cmds
+            cmds=(
+                    help:'Display the help'
+                    install:'Installs a browser package locally into a components directory'
+                    list:'Lists all packages'
+                    ls:'Lists all packages'
+                    uninstall:'Uninstalls a browser package locally from your components directory'
+                    update:'Refreshes a package install'
+                    link:'The link functionality allows developers to easily test their packages. Linking is a two-step process.'
+                    lookup:'Looks up a package url by name'
+                    info:'Version info and description of a particular package.'
+                    init:'Creates a component.json file based on answers to questions'
+                    register:'Register a package.'
+                    search:'Finds all packages or a specific package.'
+                    cache-clean:'Cleans all the bower cache or the specified packages cache'
+                    completion:'Tab Completion for bower'
+                    --version:'Show version information and quit'
+            )
+            _describe -t commands "command" cmds
+            ;;
+        subcmd)
+            completeArgTwo "${words[@]}"
+            ;;
+    esac
+}
 
 if (( CURRENT == 1 )); then
   _describe -t commands "bower subcommand" _arguments
