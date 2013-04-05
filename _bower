@@ -54,6 +54,7 @@ __bower_completeArgOne() {
             __bower_completeArgTwo "${words[@]}"
             ;;
     esac
+    ret=0 # tells compsys you successfully added some completions
 }
 
 
@@ -114,7 +115,7 @@ __bower_completeArgTwo() {
             ;;
         completion)
             ;;
-        esac
+    esac
 }
 
 local -a subOptions
@@ -122,7 +123,6 @@ local -a subOptions
 
 _arguments -C $arguments
 
-__bower_completeArgOne "$state" && ret=0 # manage completion for first argument
+__bower_completeArgOne "$state" # manage completion for first argument
 
-
- return ret
+return $ret
