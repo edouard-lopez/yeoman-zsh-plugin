@@ -14,8 +14,8 @@ This is a [Yeoman](http://yeoman.io/) plugin for [Oh My ZSH](https://github.com/
     ```
     git clone https://github.com/sayanee/yeoman-oh-my-zsh.git yeoman
     ```
-3. Include `yeoman` plugin to your `.zshrc` file along with other plugins:
-    
+3. In your `~/.zshrc`, add `yeoman` to the list of plugins to load:
+
     ```
     ...
     plugins=(git nanoc yeoman)
