@@ -21,6 +21,15 @@ arguments=(
 )
 
 
+# @description Extract the description from package's JSON
+# @param    $1|${versions[1]}  take the first version in the list (not necessarily the oldest)
+# @return    string
+__yo_getDescription() {
+    # $versions is available from __yo_cacheGeneratorList()
+    local packageInfo="${versions[1]}package/package.json"
+
+    echo "$(grep 'description' "$packageInfo" | cut -d '"' -f 4 )"
+}
 
 # @description run a NPM search in the background and store results in "$generatorCache"
 # @param    $1|$generatorCache  File to store npm search results
