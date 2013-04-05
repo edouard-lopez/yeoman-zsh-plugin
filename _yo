@@ -37,7 +37,7 @@ cacheGeneratorList() {
 # @description get the list of generators. If generatorCache is available use it, otherwise use default values
 # @param    $1|$generatorCache  File to store npm search results
 # @return    void
-getGeneratorList() {
+__yo_getGeneratorList() {
     if [[ -s "$generatorCache" ]] ; then # file exists and is not empty.
         {
             read # skip first line
@@ -69,7 +69,7 @@ getGeneratorList() {
 # @param    $1|$argLevel2  list of ${words[@]}
 # @param    $2|$generatorCache        File to store npm search results
 # @return    void
-completeArgOne() {
+__yo_completeArgOne() {
     local state="$1"
     local generatorCache="$2"
     local -a cmds # available "downwards", i.e. in getGeneratorList()
@@ -77,7 +77,7 @@ completeArgOne() {
     case $state in
         "cmds")
             local -a cmds
-            getGeneratorList
+            __yo_getGeneratorList
             _describe -t commands "command list" cmds
         ;;
     esac
@@ -86,6 +86,6 @@ completeArgOne() {
 
 _arguments -C $arguments && ret=0
 
-completeArgOne "$state" "$generatorCache" # manage completion for first argument
+__yo_completeArgOne "$state" "$generatorCache" # manage completion for first argument
 
 return ret
