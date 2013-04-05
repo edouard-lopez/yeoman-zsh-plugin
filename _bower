@@ -26,7 +26,7 @@ arguments=(
 # @description  manage completion for first argument
 # @param    $1|argLevel2  list of ${words[@]}
 # @return    void
-completeArgOne() {
+__bower_completeArgOne() {
     local state="$1"
 
     case $state in
@@ -51,7 +51,7 @@ completeArgOne() {
             # _describe -t options "options list" options
             ;;
         subcmd)
-            completeArgTwo "${words[@]}"
+            __bower_completeArgTwo "${words[@]}"
             ;;
     esac
 }
@@ -60,7 +60,7 @@ completeArgOne() {
 # @description  manage completion for second argument
 # @param    $1|argLevel2  list of ${words[@]}
 # @return    void
-completeArgTwo() {
+__bower_completeArgTwo() {
    local -a argLevel2
    argLevel2=( "$@" )
 
@@ -124,6 +124,6 @@ completeArgTwo() {
 
 _arguments -C $arguments && ret=0
 
-completeArgOne "$state" # manage completion for first argument
 
+__bower_completeArgOne "$state" && ret=0 # manage completion for first argument
 return ret
