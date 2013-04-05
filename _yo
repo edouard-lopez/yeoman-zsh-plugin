@@ -86,4 +86,6 @@ completeArgOne() {
 
 _arguments -C $arguments && ret=0
 
+completeArgOne "$state" "$generatorCache" # manage completion for first argument
+
 return ret
