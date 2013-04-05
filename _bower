@@ -119,8 +119,10 @@ __bower_completeArgTwo() {
 
 local -a subOptions
 
-_arguments -C $arguments && ret=0
 
+_arguments -C $arguments
 
 __bower_completeArgOne "$state" && ret=0 # manage completion for first argument
-return ret
+
+
+ return ret
