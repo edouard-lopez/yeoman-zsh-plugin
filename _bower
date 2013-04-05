@@ -61,8 +61,8 @@ __bower_completeArgOne() {
 # @param    $1|argLevel2  list of ${words[@]}
 # @return    void
 __bower_completeArgTwo() {
-   local -a argLevel2
-   argLevel2=( "$@" )
+    local -a argLevel2
+    argLevel2=( "$@" )
 
     case "$argLevel2[2]" in
         help)
