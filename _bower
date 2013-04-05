@@ -125,6 +125,8 @@ completeArgTwo() {
 }
 
 
-_arguments -C $arguments
+_arguments -C $arguments && ret=0
 
 completeArgOne "$state" # manage completion for first argument
+
+return ret

@@ -66,3 +66,8 @@ getGeneratorList() {
 
 # create a cache for the list of generator
 cacheGeneratorList
+
+
+_arguments -C $arguments && ret=0
+
+return ret
