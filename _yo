@@ -62,10 +62,6 @@ getGeneratorList() {
     fi
     echo "${arguments[@]}"
 }
-if (( CURRENT == 1 )); then
-  _describe -t commands "yo generators" _arguments
-  return
-fi
 
 
 # create a cache for the list of generator

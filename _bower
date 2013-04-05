@@ -59,10 +59,6 @@ completeArgOne() {
     esac
 }
 
-if (( CURRENT == 1 )); then
-  _describe -t commands "bower subcommand" _arguments
-  return
-fi
 
 # @description  manage completion for second argument
 # @param    $1|argLevel2  list of ${words[@]}
