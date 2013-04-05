@@ -6,6 +6,7 @@
 
 
 local cache="$(npm config get cache)" # location of npm cache (@see {@link https://npmjs.org/doc/cache.html})
+local -a keywords; keywords=( 'yeoman' 'generator' ) # generators we are looking for
 
 local state line context
 # $opt_args is an associative array that contains command-line options like -d or -f
@@ -25,8 +26,6 @@ arguments=(
 # @param    $1|$generatorCache  File to store npm search results
 # @return    void
 cacheGeneratorList() {
-    local generatorCache="$1"
-    local keywords=( yeoman generator )
 
     rm "$generatorCache" # rm on plugin/zsh reload
 
@@ -72,8 +71,6 @@ __yo_getGeneratorList() {
 # @param    $2|$cache        File to store npm search results
 # @return    void
 __yo_completeArgOne() {
-    local state="$1"
-    local cache="$2"
     local -a generator # available "downwards", i.e. in getGeneratorList()
 
     case $state in
