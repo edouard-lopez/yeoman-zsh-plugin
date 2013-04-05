@@ -34,21 +34,22 @@ cacheGeneratorList() {
         npm search "$k" >> "$generatorCache"
     done
 }
-
-
-# @description get the list of generators. If cache is available use it, otherwise use default values
+# @description get the list of generators. If generatorCache is available use it, otherwise use default values
 # @param    $1|$generatorCache  File to store npm search results
 # @return    void
 getGeneratorList() {
-    local generatorCache="$1"
-    local arguments=()
-
-    if [[ -e "$generatorCache" ]]; then
-        while IFS=' ' read -r generator _ ; do
-            arguments+=("$generator");
-        done < "$generatorCache"
+    if [[ -s "$generatorCache" ]] ; then # file exists and is not empty.
+        {
+            read # skip first line
+            # printf "generatorCache[non-empty]: %s\n" "$generatorCache"
+            while IFS=' ' read -r generator junk; do
+                # printf "generator: %s\n" "$generator"
+                cmds+=("$generator");
+            done
+        } < "$generatorCache"
     else
-        arguments=(
+        # printf "no generatorCache\n"
+        cmds=(
             generator-angular:'Yeoman generator for AngularJS'
             generator-backbone-amd:'generator-backbone-amd'
             generator-bootstrap:'Yeoman generator for Twitter Bootstrap'
@@ -61,12 +62,26 @@ getGeneratorList() {
             generator-webapp:'Default Yeoman generator for scaffolding out a front-end web app'
         )
     fi
-    echo "${arguments[@]}"
 }
 
 
-# create a cache for the list of generator
-cacheGeneratorList
+# @description  manage completion for first argument
+# @param    $1|$argLevel2  list of ${words[@]}
+# @param    $2|$generatorCache        File to store npm search results
+# @return    void
+completeArgOne() {
+    local state="$1"
+    local generatorCache="$2"
+    local -a cmds # available "downwards", i.e. in getGeneratorList()
+
+    case $state in
+        "cmds")
+            local -a cmds
+            getGeneratorList
+            _describe -t commands "command list" cmds
+        ;;
+    esac
+}
 
 
 _arguments -C $arguments && ret=0
