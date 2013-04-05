@@ -27,6 +27,7 @@ arguments=(
 # @return    void
 completeArgOne() {
     local state="$1"
+
     case $state in
         cmd)
             local -a cmds options

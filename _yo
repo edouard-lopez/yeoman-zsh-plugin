@@ -13,11 +13,12 @@ local state line context
 local -A opt_args
 
 local -a arguments
+arguments=(
+    '--help[show the help message and quit]'
+    '--version[show version information and quit]'
+    '*:: :->cmds'
+)
 
-arguments \
-  '(--help)--help[show the help message and quit]' \
-  '(--version)--version[show version information and quit]' \
-  '*:: :->subcmds' && return 0
 
 
 # @description run a NPM search in the background and store results in "$generatorCache"
