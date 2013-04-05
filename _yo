@@ -92,11 +92,12 @@ __yo_completeArgOne() {
             _describe -t commands "command list" generator
         ;;
     esac
+    ret=0 # tells compsys you successfully added some completions
 }
 
 
-_arguments -C $arguments && ret=0
+_arguments -C $arguments
 
 __yo_completeArgOne "$state" "$cache" # manage completion for first argument
 
-return ret
+return $ret
