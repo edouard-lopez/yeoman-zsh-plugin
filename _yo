@@ -17,7 +17,7 @@ local -a arguments
 arguments=(
     '--help[show the help message and quit]'
     '--version[show version information and quit]'
-    '*:: :->cmds'
+    '*:: :->generator'
 )
 
 
@@ -87,10 +87,9 @@ __yo_completeArgOne() {
     local -a generator # available "downwards", i.e. in getGeneratorList()
 
     case $state in
-        "cmds")
-            local -a cmds
+        "generator")
             __yo_getGeneratorList
-            _describe -t commands "command list" cmds
+            _describe -t commands "command list" generator
         ;;
     esac
 }
