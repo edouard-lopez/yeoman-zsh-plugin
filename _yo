@@ -31,15 +31,26 @@ __yo_getDescription() {
     echo "$(grep 'description' "$packageInfo" | cut -d '"' -f 4 )"
 }
 
-# @description run a NPM search in the background and store results in "$generatorCache"
-# @param    $1|$generatorCache  File to store npm search results
-# @return    void
-cacheGeneratorList() {
 
-    rm "$generatorCache" # rm on plugin/zsh reload
+# @description run a NPM search in the background and store results in "$cache"
+# @param    $1|$cache  File to store npm search results
+# @return    void
+__yo_cacheGeneratorList() {
+    local -a matches # contains list of matching generator
+    local package # package's name
+    local versions # possibly several versions existn
+    local description # package's description
+    local suggestion # suggestion, in the form of: name:'description'
 
     for k in "${keywords[@]}"; do
-        npm search "$k" >> "$generatorCache"
+        matches=( "$cache"/*"$k"* )
+        for m in "${matches[@]}"; do
+            package="$(basename $m)"
+            versions=( "$m"/*/ ) # limit to directories
+            description="$(__yo_getDescription)"
+            suggestion=$(printf "%s:%s" "$package" "$description")
+            generator+=( "$suggestion" )
+        done
     done
 }
 
@@ -48,29 +59,22 @@ cacheGeneratorList() {
 # @param    $1|$cache  File to store npm search results
 # @return    void
 __yo_getGeneratorList() {
-    if [[ -s "$generatorCache" ]] ; then # file exists and is not empty.
-        {
-            read # skip first line
-            # printf "generatorCache[non-empty]: %s\n" "$generatorCache"
-            while IFS=' ' read -r generator junk; do
-                # printf "generator: %s\n" "$generator"
-                cmds+=("$generator");
-            done
-        } < "$generatorCache"
-    else
-        # printf "no generatorCache\n"
-        cmds=(
-            generator-angular:'Yeoman generator for AngularJS'
-            generator-backbone-amd:'generator-backbone-amd'
-            generator-bootstrap:'Yeoman generator for Twitter Bootstrap'
-            # chromeapp
-            # chrome-extension
-            ember:'Ember - JavaScript Application Framework'
-            # jasmine
-            generator-mocha:'Yeoman generator for Mocha'
-            generator-testacular:'Yeoman generator for Testacular'
-            generator-webapp:'Default Yeoman generator for scaffolding out a front-end web app'
-        )
+
+    generator=( # default generator
+        generator-angular:'Yeoman generator for AngularJS'
+        generator-backbone-amd:'generator-backbone-amd'
+        generator-bootstrap:'Yeoman generator for Twitter Bootstrap'
+        # chromeapp
+        # chrome-extension
+        ember:'Ember - JavaScript Application Framework'
+        # jasmine
+        generator-mocha:'Yeoman generator for Mocha'
+        generator-testacular:'Yeoman generator for Testacular'
+        generator-webapp:'Default Yeoman generator for scaffolding out a front-end web app'
+    )
+
+    if [[ -d "$cache" ]] ; then # file exists and is not empty.
+        __yo_cacheGeneratorList # fetch the list cached packages
     fi
 }
 
