@@ -28,26 +28,38 @@ This is a [Yeoman](http://yeoman.io/) plugin for [Oh My ZSH](https://github.com/
 1. Common aliases with prefix `ym` for `yeoman`:
 
     ```
-    alias ymget='curl -L get.yeoman.io | bash'
+    alias ymget='npm install -g yo grunt-cli bower'
 
-    alias ym='yeoman help'
-    alias ymv='yeoman --version'
-    
-    alias ymi='yeoman init'
-    alias ymb='yeoman build'
-    alias ymsv='yeoman server'
-    alias ymsd='yeoman server:dist'
-    alias ymst='yeoman server:test'
-    
-    alias ymt='yeoman test'
-    alias ymii='yeoman install'
-    alias ymui='yeoman uninstall'
-    alias ymu='yeoman update'
-    alias yml='yeoman list'
-    alias yms='yeoman search'
-    alias ymlu='yeoman lookup'
+    alias ym='yo help'
+    alias ymv='yo --version'
+
+    alias ymi='yo'
+    alias ymb='grunt build'
+    alias ymsv='grunt server'
+    alias ymsd='grunt server:dist'
+    alias ymst='grunt server:test'
+    alias ymt='grunt test'
+    alias ymii='bower install'
+    alias ymui='bower uninstall'
+    alias ymu='bower update'
+    alias yml='bower list'
+    alias yms='bower search'
+    alias ymlu='bower lookup'
+
+    # new alias for Yoeman >=1.0 (using 'grunt' and 'bower')
+    alias grb='grunt build'
+    alias grsv='grunt server'
+    alias grsd='grunt server:dist'
+    alias grst='grunt server:test'
+    alias grt='grunt test'
+
+    alias bwii='bower install'
+    alias bwui='bower uninstall'
+    alias bwu='bower update'
+    alias bwl='bower list'
+    alias bws='bower search'
+    alias bwlu='bower lookup'
     ```
-    
 2. You can also tab your way into the various commands with zsh autocomplete functions that comes with this plugin:
     - commond commands
 
