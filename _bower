@@ -68,39 +68,35 @@ __bower_completeArgTwo() {
         help)
             ;;
         init)
-            local -a subcmds
-            subcmds=(
+            subOptions=(
             )
             ;;
         install)
-            local -a subcmds
-            subcmds=(
+            subOptions=(
                 --save:'Save installed packages into the project s component.json dependencies' \
                 --save-dev:'Save installed packages into the project s component.json devDependencies' \
                 --force:'Force fetching remote resources even if a local copy exists on disk' \
                 --force-latest:'Force latest version on conflict' \
                 --production:'Do not install project devDependencies' \
             )
-            _describe -t sub-commands "sub-command" subcmds
+            _describe -t sub-options "opitons list" subOptions
             ;;
         list|ls)
-            local -a subcmds
-            subcmds=(
+            subOptions=(
                 --map:'Generates a deep dependency JSON source mapping' \
                 --paths:'Generates a simple JSON source mapping' \
                 --sources:'Generates list of source files in order of dependency' \
                 --offline:'Avoid checking for newer versions'
             )
-            _describe -t sub-commands "sub-command" subcmds
+            _describe -t sub-options "opitons list" subOptions
             ;;
         uninstall|update)
-            local -a subcmds
-            subcmds=(
+            subOptions=(
                 --save:'Updates dependencies entries in the project s component.json' \
                 --force:'Force fetching remote resources even if a local copy exists on disk' \
                 --force-latest:'Force latest version on conflict'
             )
-            _describe -t sub-commands "sub-command" subcmds
+            _describe -t sub-options "opitons list" subOptions
             ;;
         link)
             ;;
@@ -121,6 +117,7 @@ __bower_completeArgTwo() {
         esac
 }
 
+local -a subOptions
 
 _arguments -C $arguments && ret=0
 
