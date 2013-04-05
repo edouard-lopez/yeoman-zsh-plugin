@@ -12,8 +12,9 @@ local -A opt_args
 
 local -a arguments
 arguments=(
-    '--no-color[Do not print colors (available in all commands)]'
     '--help[Show the help message and quit]'
+    '--no-color[Do not print colors (available in all commands)]'
+    '--version[Show version information and quit]'
     # This describes how arguments (usually non-option arguments, those  not
     # beginning  with  - or +) are to be completed when neither of the first
     # two forms was provided.  Any number of arguments can be  completed  in
@@ -45,11 +46,6 @@ completeArgOne() {
                 search:'Finds all packages or a specific package.'
                 cache-clean:'Cleans all the bower cache or the specified packages cache'
                 completion:'Tab Completion for bower'
-            # options=(
-                --help:'Show the help message and quit'
-                --no-color:'Do not print colors (available in all commands)'
-                --version:'Show version information and quit'
-            # )
             )
             _describe -t commands "command list" cmds
             # _describe -t options "options list" options
