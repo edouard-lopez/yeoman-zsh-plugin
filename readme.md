@@ -101,7 +101,9 @@ $ bower list<tab><tab>
 --version               -- Show version information and quit
 ```
 
+### `grunt` completion
 
+    todo
 ##Features
 
 1. Common aliases with prefix `ym` for `yeoman`:
