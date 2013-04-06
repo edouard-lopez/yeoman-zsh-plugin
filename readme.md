@@ -4,6 +4,7 @@ This is a [Yeoman](http://yeoman.io/) plugin for [Oh My ZSH](https://github.com/
 
 This version is a full revamp of [@sayanee/yeoman-oh-my-zsh](sayanee/yeoman-oh-my-zsh)  original plugin (for version `≤0.9.6`).
 
+## Installation
 
 1. In the command line, navigate to the folder:
 
@@ -15,7 +16,21 @@ This version is a full revamp of [@sayanee/yeoman-oh-my-zsh](sayanee/yeoman-oh-m
     ```
     git clone https://github.com/sayanee/yeoman-oh-my-zsh.git yeoman
     ```
-3. In your `~/.zshrc`, add `yeoman` to the list of plugins to load:
+
+## Configuration
+
+1. Edit your `~/.zshrc` and add `yeoman` to the list of plugins to load:
+
+    ```
+    plugins=( ... yeoman )
+    ```
+
+2. Then, restart your command line application. Alternatively, you can source your current shell to see changes :
+
+    ```
+    source ~/.zshrc
+    ```
+
 
     ```
     ...
