@@ -31,6 +31,35 @@ This version is a full revamp of [@sayanee/yeoman-oh-my-zsh](sayanee/yeoman-oh-m
     source ~/.zshrc
     ```
 
+## Commands Completion
+
+You can use `zsh` completion by typing `tab` after the three commands `yo`, `bower` and ~~`grunt`~~ and get some insight of the possibility:
+
+### `yo` completion
+
+* List installed generators :
+
+    ```
+    $ yo<tab>
+    ember                                     -- Ember - JavaScript Application Framework
+    generator-angular                         -- Yeoman generator for AngularJS
+    generator-backbone-amd                    -- generator-backbone-amd
+    generator-bootstrap                       -- Yeoman generator for Twitter Bootstrap
+    generator-karma                           -- Yeoman generator for Karma
+    generator-mocha         generator-mocha   -- Yeoman generator for Mocha
+    generator-testacular                      -- Yeoman generator for Testacular
+    generator-webapp        generator-webapp  -- Default Yeoman generator for scaffolding out a front-end web app
+    yeoman-generator        yeoman-generator  -- Rails-inspired generator system that provides scaffolding for your apps
+    ```
+
+ * List of options :
+
+    ```
+    $ yo -<tab><tab>
+    --help                  -- show the help message and quit
+    --version               -- show version information and quit
+    ```
+
 
     ```
     ...
