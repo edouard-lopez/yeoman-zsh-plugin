@@ -1,0 +1,106 @@
+# Location of this plugin
+__yeoman_pluginDir="$(dirname "$0")"
+# location of generator-list file
+__yeoman_generatorListFile="$__yeoman_pluginDir"/generators-list.txt
+
+
+# location of npm cache (@see {@link https://npmjs.org/doc/cache.html}) or
+# local -a cache; #="$(npm config get cache)"
+# local cache=( "$(npm config get cache)" "node_modules" )
+# generators we are looking for
+local -a keywords; keywords=( 'yeoman' '-generator' 'generator-' )
+# terms to blacklist/skip
+local -a blacklist; blacklist=('yeoman-generator')
+
+
+
+# @description get the list of generators. If cache is available use it, otherwise use default values
+# @param    $1|$cache  File to store npm search results
+# @return    void
+__yo_getGeneratorList() {
+
+    generator=( # default generator
+        webapp:'Default Yeoman generator for scaffolding out a front-end web app'
+        test:'debugging value'
+    )
+    __yo_getGenerators # global
+    # __yo_getGenerators # local
+}
+
+
+# @description fetch local (if a directory if given) or global generators
+# @param    $1|$workingDir  working directory for local generator look-up
+# @return    stream
+__yo_getGlobalGenerators() {
+  pluginDir="$1"
+
+  npm list --global --parseable 2> /dev/null \
+      | grep '/generator-[^/]*$' \
+      | while read line; do  __yo_getGeneratorMetadata "$line"; done \
+      | sort -u \
+  > "$__yeoman_generatorListFile"
+
+  chmod u=rw,g=r,o= "$__yeoman_generatorListFile"
+}
+
+# @description Get generator name and description
+# @param    $1|generatorPath  global path as return by 'npm list --global'
+#           (@see __yo_getGlobalGenerators)
+# @return    string
+__yo_getGeneratorMetadata() {
+  generatorPath="$1"
+  package="$(basename "$generatorPath")"
+  pkg="${package//generator-}"
+  description="$(__yo_getDescription "$package" &)"
+  suggestion=$(printf "%s:%s" "$pkg" "$description")
+
+  echo "$suggestion"
+}
+
+
+# @description Extract the description from package's JSON
+# @param    $1|${versions[1]}  take the first version in the list (not necessarily the oldest)
+# @return    string
+__yo_getDescription() {
+  packageInfo="$1"
+
+  description="$(npm view --silent "$packageInfo" description &)"
+  echo "'$description'"
+}
+
+
+__yo_getSuggestion() {
+    modulePath="${1:-DEBUG_ME}"
+
+    if [[ -d "$modulePath" ]]; then
+      pkg="$(basename "$modulePath")"
+      (( $+blacklist[(r)$pkg] )) && continue # skip blacklisted items
+      package="${pkg//$k}"
+      versions=( "$package"/ ) # limit to directories
+      description="$(__yo_getDescription "$modulePath")"
+      suggestion=$(printf "%s:%s" "$package" "$description")
+      # echo "$suggestion"
+      generator+=( "$suggestion" )
+    else
+      while IFS= read -r suggestion; do
+        generator+=( "$suggestion" )
+      done < __yeoman_generatorListFile
+    fi
+}
+
+
+# @description fetch local (if a directory if given) or global generators
+# @param    $1|$workingDir  working directory for local generator look-up
+# @return    stream
+__yo_getGenerators() {
+    workingDir=$1
+
+    if [[ -n "$workingDir" ]]; then
+      npm list --parseable 2> /dev/null | grep generator
+    else
+        npm list --global --parseable 2> /dev/null \
+            | grep '/generator-' \
+            | while read line; do __yo_getSuggestion $line; done \
+            | sort -u
+    fi
+}

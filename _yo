@@ -4,14 +4,6 @@
 # @description  yo zsh completion
 # @require        'yo' to be installed
 
-
-# location of npm cache (@see {@link https://npmjs.org/doc/cache.html})
-local cache="$(npm config get cache)"
-# generators we are looking for
-local -a keywords; keywords=( 'yeoman' '-generator' 'generator-' )
-# terms to blacklist/skip
-local -a blacklist; blacklist=('yeoman-generator')
-
 local state line context
 # $opt_args is an associative array that contains command-line options like -d or -f
 # as its keys and the actual parameters to those options (if any) as its values
@@ -23,57 +15,6 @@ arguments=(
     '--version[show version information and quit]'
     '*:: :->generator'
 )
-
-
-# @description Extract the description from package's JSON
-# @param    $1|${versions[1]}  take the first version in the list (not necessarily the oldest)
-# @return    string
-__yo_getDescription() {
-    # $versions is available from __yo_cacheGeneratorList()
-    local packageInfo="${versions[1]}package/package.json"
-
-    echo "$(grep 'description' "$packageInfo" | cut -d '"' -f 4 )"
-}
-
-
-# @description run a NPM search in the background and store results in "$cache"
-# @param    $1|$cache  File to store npm search results
-# @return    void
-__yo_cacheGeneratorList() {
-    local -a matches # contains list of matching generator
-    local package # package's name
-    local versions # possibly several versions existn
-    local description # package's description
-    local suggestion # suggestion, in the form of: name:'description'
-
-    for k in "${keywords[@]}"; do
-        matches=( "$cache"/*"$k"* )
-        for m in "${matches[@]}"; do
-            pkg="$(basename $m)"
-            (( $+blacklist[(r)$pkg] )) && continue # skip blacklisted items
-            package="${pkg//$k}"
-            versions=( "$m"/*/ ) # limit to directories
-            description="$(__yo_getDescription)"
-            suggestion=$(printf "%s:%s" "$package" "$description")
-            generator+=( "$suggestion" )
-        done
-    done
-}
-
-
-# @description get the list of generators. If cache is available use it, otherwise use default values
-# @param    $1|$cache  File to store npm search results
-# @return    void
-__yo_getGeneratorList() {
-
-    generator=( # default generator
-        webapp:'Default Yeoman generator for scaffolding out a front-end web app'
-    )
-
-    if [[ -d "$cache" ]] ; then # file exists and is not empty.
-        __yo_cacheGeneratorList # fetch the list cached packages
-    fi
-}
 
 
 # @description  manage completion for first argument
@@ -95,6 +36,6 @@ __yo_completeArgOne() {
 
 _arguments -C $arguments
 
-__yo_completeArgOne "$state" "$cache" # manage completion for first argument
+__yo_completeArgOne "$state" # manage completion for first argument
 
 return $ret
