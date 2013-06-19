@@ -9,6 +9,8 @@
 local cache="$(npm config get cache)"
 # generators we are looking for
 local -a keywords; keywords=( 'yeoman' '-generator' 'generator-' )
+# terms to blacklist/skip
+local -a blacklist; blacklist=('yeoman-generator')
 
 local state line context
 # $opt_args is an associative array that contains command-line options like -d or -f
@@ -47,8 +49,9 @@ __yo_cacheGeneratorList() {
     for k in "${keywords[@]}"; do
         matches=( "$cache"/*"$k"* )
         for m in "${matches[@]}"; do
-            pkg="${m//$k}"
-            package="$(basename $pkg)"
+            pkg="$(basename $m)"
+            (( $+blacklist[(r)$pkg] )) && continue # skip blacklisted items
+            package="${pkg//$k}"
             versions=( "$m"/*/ ) # limit to directories
             description="$(__yo_getDescription)"
             suggestion=$(printf "%s:%s" "$package" "$description")
