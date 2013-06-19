@@ -5,7 +5,7 @@ __yo_getGlobalGenerators() {
   pluginDir="$(dirname "$1")"
 
   npm list --global --parseable 2> /dev/null \
-      | grep '/generator-' \
+      | grep '/generator-[^/]*$' \
       | while read line; do basename "$line"; done \
       | sort -u \
   > "$pluginDir"/generators-list.txt
