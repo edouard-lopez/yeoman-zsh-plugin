@@ -11,6 +11,8 @@ __yo_getGlobalGenerators() {
   > "$pluginDir"/generators-list.txt
 }
 
+# Get the list of global generator and store it in a file
+(__yo_getGlobalGenerators "$0" &)
 
 alias ymget='npm install -g yo grunt-cli bower'
 
