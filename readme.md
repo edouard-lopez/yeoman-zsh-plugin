@@ -1,8 +1,10 @@
-# Yeoman plugin for Oh My ZSH
+# Yeoman plugin for (Oh My) ZSH
 
-This is a [Yeoman](http://yeoman.io/) plugin for [Oh My ZSH](https://github.com/robbyrussell/oh-my-zsh), compatible with `yeoman` version `≥1.0`. It provide command line aliases and zsh *autocomplete functions*.
+This is a [Yeoman](http://yeoman.io/) plugin for [Oh My ZSH](https://github.com/robbyrussell/oh-my-zsh), **compatible with _yeoman_ version `≥1.0`**. It provides:
+* aliases ;
+* **zsh autocomplete** functions and options.
 
-This version is a full revamp of [@sayanee/yeoman-oh-my-zsh](sayanee/yeoman-oh-my-zsh)  original plugin (for version `≤0.9.6`).
+`Note:` originally a fork of [@sayanee/yeoman-oh-my-zsh](sayanee/yeoman-oh-my-zsh) (for version `≤0.9.6`). It's has since been _fully redesign_ to work with yeoman `≥v1.0`.
 
 ## Installation
 
