@@ -39,58 +39,57 @@ You can use `zsh` completion by typing `tab` after the three commands `yo`, `bow
 
 * List installed generators :
 
-    ```
-    $ yo<tab>
-    ember                                     -- Ember - JavaScript Application Framework
-    generator-angular                         -- Yeoman generator for AngularJS
-    generator-backbone-amd                    -- generator-backbone-amd
-    generator-bootstrap                       -- Yeoman generator for Twitter Bootstrap
-    generator-karma                           -- Yeoman generator for Karma
-    generator-mocha         generator-mocha   -- Yeoman generator for Mocha
-    generator-testacular                      -- Yeoman generator for Testacular
-    generator-webapp        generator-webapp  -- Default Yeoman generator for scaffolding out a front-end web app
-    yeoman-generator        yeoman-generator  -- Rails-inspired generator system that provides scaffolding for your apps
-    ```
+```bash
+$ yo<tab>
+ember                                     -- Ember - JavaScript Application Framework
+generator-angular                         -- Yeoman generator for AngularJS
+generator-backbone-amd                    -- generator-backbone-amd
+generator-bootstrap                       -- Yeoman generator for Twitter Bootstrap
+generator-karma                           -- Yeoman generator for Karma
+generator-mocha         generator-mocha   -- Yeoman generator for Mocha
+generator-testacular                      -- Yeoman generator for Testacular
+generator-webapp        generator-webapp  -- Default Yeoman generator for scaffolding out a front-end web app
+yeoman-generator        yeoman-generator  -- Rails-inspired generator system that provides scaffolding for your apps
+```
 
  * List of options :
 
-    ```
-    $ yo -<tab><tab>
-    --help                  -- show the help message and quit
-    --version               -- show version information and quit
-    ```
+```bash
+$ yo -<tab><tab>
+--help                  -- show the help message and quit
+--version               -- show version information and quit
+```
 
 ### `bower` completion
 
 * List of subcommands :
 
-    ```
-    $ bower<tab>
-    cache-clean      -- Cleans all the bower cache or the specified packages cache
-    completion       -- Tab Completion for bower
-    info             -- Version info and description of a particular package.
-    init             -- Creates a component.json file based on answers to questions
-    install          -- Installs a browser package locally into a components directory
-    link             -- The link functionality allows developers to easily test their packages. Linking is a two-step process.
-    list         ls  -- Lists all packages
-    lookup           -- Looks up a package url by name
-    register         -- Register a package.
-    search           -- Finds all packages or a specific package.
-    uninstall        -- Uninstalls a browser package locally from your components directory
-    update           -- Refreshes a package install
-    ```
-* List of options are available both for top level and subcommands :
-
-    ```
-    $ bower<tab>
-    --help                  -- Show the help message and quit
-    --no-color              -- Do not print colors (available in all commands)
-    --version               -- Show version information and quit
-    ```
+```bash
+$ bower<tab>
+cache-clean      -- Cleans all the bower cache or the specified packages cache
+completion       -- Tab Completion for bower
+info             -- Version info and description of a particular package.
+init             -- Creates a component.json file based on answers to questions
+install          -- Installs a browser package locally into a components directory
+link             -- The link functionality allows developers to easily test their packages. Linking is a two-step process.
+list         ls  -- Lists all packages
+lookup           -- Looks up a package url by name
+register         -- Register a package.
+search           -- Finds all packages or a specific package.
+uninstall        -- Uninstalls a browser package locally from your components directory
+update           -- Refreshes a package install
+```
 
 * Subcommand options:
 
+```bash
+$ bower<tab>
+--help                  -- Show the help message and quit
+--no-color              -- Do not print colors (available in all commands)
+--version               -- Show version information and quit
 ```
+
+```bash
 $ bower list<tab><tab>
 --help                  -- Show the help message and quit
 --map                   -- Generates a deep dependency JSON source mapping
@@ -137,22 +136,22 @@ Old aliases have been updated to *use new yeoman's `≥1.0` commands*, i.e. `yo`
 
 * `g...` for `grunt` commands :
 
-    ```
-    # new alias for Yoeman ≥1.0 (using 'grunt' and 'bower')
-    alias grb='grunt build'
-    alias grsv='grunt server'
-    alias grsd='grunt server:dist'
-    alias grst='grunt server:test'
-    alias grt='grunt test'
-    ```
+```bash
+# new alias for Yoeman ≥1.0 (using 'grunt' and 'bower')
+alias grb='grunt build'
+alias grsv='grunt server'
+alias grsd='grunt server:dist'
+alias grst='grunt server:test'
+alias grt='grunt test'
+```
 
 * `bw...` for `bower` commands.
 
-    ```
-    alias bwii='bower install'
-    alias bwui='bower uninstall'
-    alias bwu='bower update'
-    alias bwl='bower list'
-    alias bws='bower search'
-    alias bwlu='bower lookup'
-    ```
+```bash
+alias bwii='bower install'
+alias bwui='bower uninstall'
+alias bwu='bower update'
+alias bwl='bower list'
+alias bws='bower search'
+alias bwlu='bower lookup'
+```
