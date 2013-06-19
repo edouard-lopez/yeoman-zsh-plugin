@@ -9,6 +9,8 @@ __yo_getGlobalGenerators() {
       | while read line; do basename "$line"; done \
       | sort -u \
   > "$pluginDir"/generators-list.txt
+
+  chmod u=rw,g=r,o= "$pluginDir"/generators-list.txt
 }
 
 # Get the list of global generator and store it in a file
