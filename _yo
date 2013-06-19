@@ -6,7 +6,7 @@
 
 
 local cache="$(npm config get cache)" # location of npm cache (@see {@link https://npmjs.org/doc/cache.html})
-local -a keywords; keywords=( 'yeoman' 'generator' ) # generators we are looking for
+local -a keywords; keywords=( 'yeoman' '-generator' 'generator-' ) # generators we are looking for
 
 local state line context
 # $opt_args is an associative array that contains command-line options like -d or -f
@@ -45,7 +45,8 @@ __yo_cacheGeneratorList() {
     for k in "${keywords[@]}"; do
         matches=( "$cache"/*"$k"* )
         for m in "${matches[@]}"; do
-            package="$(basename $m)"
+            pkg="${m//$k}"
+            package="$(basename $pkg)"
             versions=( "$m"/*/ ) # limit to directories
             description="$(__yo_getDescription)"
             suggestion=$(printf "%s:%s" "$package" "$description")
@@ -61,16 +62,16 @@ __yo_cacheGeneratorList() {
 __yo_getGeneratorList() {
 
     generator=( # default generator
-        generator-angular:'Yeoman generator for AngularJS'
-        generator-backbone-amd:'generator-backbone-amd'
-        generator-bootstrap:'Yeoman generator for Twitter Bootstrap'
+        angular:'Yeoman generator for AngularJS'
+        backbone-amd:'generator-backbone-amd'
+        bootstrap:'Yeoman generator for Twitter Bootstrap'
         # chromeapp
         # chrome-extension
         ember:'Ember - JavaScript Application Framework'
         # jasmine
-        generator-mocha:'Yeoman generator for Mocha'
-        generator-testacular:'Yeoman generator for Testacular'
-        generator-webapp:'Default Yeoman generator for scaffolding out a front-end web app'
+        mocha:'Yeoman generator for Mocha'
+        testacular:'Yeoman generator for Testacular'
+        webapp:'Default Yeoman generator for scaffolding out a front-end web app'
     )
 
     if [[ -d "$cache" ]] ; then # file exists and is not empty.
