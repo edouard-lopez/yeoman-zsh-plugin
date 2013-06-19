@@ -5,8 +5,10 @@
 # @require        'yo' to be installed
 
 
-local cache="$(npm config get cache)" # location of npm cache (@see {@link https://npmjs.org/doc/cache.html})
-local -a keywords; keywords=( 'yeoman' '-generator' 'generator-' ) # generators we are looking for
+# location of npm cache (@see {@link https://npmjs.org/doc/cache.html})
+local cache="$(npm config get cache)"
+# generators we are looking for
+local -a keywords; keywords=( 'yeoman' '-generator' 'generator-' )
 
 local state line context
 # $opt_args is an associative array that contains command-line options like -d or -f
