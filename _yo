@@ -67,15 +67,6 @@ __yo_cacheGeneratorList() {
 __yo_getGeneratorList() {
 
     generator=( # default generator
-        angular:'Yeoman generator for AngularJS'
-        backbone-amd:'generator-backbone-amd'
-        bootstrap:'Yeoman generator for Twitter Bootstrap'
-        # chromeapp
-        # chrome-extension
-        ember:'Ember - JavaScript Application Framework'
-        # jasmine
-        mocha:'Yeoman generator for Mocha'
-        testacular:'Yeoman generator for Testacular'
         webapp:'Default Yeoman generator for scaffolding out a front-end web app'
     )
 
