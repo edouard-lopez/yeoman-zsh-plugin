@@ -37,7 +37,7 @@ You can use `zsh` completion by typing `tab` after the three commands `yo`, `bow
 
 ### `yo` completion
 
-* List installed generators :
+#### List installed generators
 
 ```bash
 $ yo<tab>
@@ -52,7 +52,7 @@ generator-webapp        generator-webapp  -- Default Yeoman generator for scaffo
 yeoman-generator        yeoman-generator  -- Rails-inspired generator system that provides scaffolding for your apps
 ```
 
- * List of options :
+#### List of options
 
 ```bash
 $ yo -<tab><tab>
@@ -62,7 +62,7 @@ $ yo -<tab><tab>
 
 ### `bower` completion
 
-* List of subcommands :
+#### List of subcommands :
 
 ```bash
 $ bower<tab>
@@ -80,7 +80,7 @@ uninstall        -- Uninstalls a browser package locally from your components di
 update           -- Refreshes a package install
 ```
 
-* Subcommand options:
+#### List of options are available both for top level and subcommands :
 
 ```bash
 $ bower<tab>
@@ -88,6 +88,8 @@ $ bower<tab>
 --no-color              -- Do not print colors (available in all commands)
 --version               -- Show version information and quit
 ```
+
+#### Subcommand options:
 
 ```bash
 $ bower list<tab><tab>
@@ -134,7 +136,7 @@ Old aliases have been updated to *use new yeoman's `≥1.0` commands*, i.e. `yo`
 
 **New aliases**  have been added to be **more intituive** with yeoman version `≥1.0` commands (i.e. `yo`, `bower` and `grunt`). They respectly use the following prefixes:
 
-* `g...` for `grunt` commands :
+### `g...` for `grunt` commands :
 
 ```bash
 # new alias for Yoeman ≥1.0 (using 'grunt' and 'bower')
@@ -145,7 +147,7 @@ alias grst='grunt server:test'
 alias grt='grunt test'
 ```
 
-* `bw...` for `bower` commands.
+### `bw...` for `bower` commands.
 
 ```bash
 alias bwii='bower install'
