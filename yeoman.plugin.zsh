@@ -1,20 +1,25 @@
+# Location of this plugin
+__yeoman_pluginDir="$(dirname "$0")"
+# location of generator-list file
+__yeoman_generatorListFile="$__yeoman_pluginDir"/generators-list.txt
+
 # @description fetch local (if a directory if given) or global generators
 # @param    $1|$workingDir  working directory for local generator look-up
 # @return    stream
 __yo_getGlobalGenerators() {
-  pluginDir="$(dirname "$1")"
+  pluginDir="$1"
 
   npm list --global --parseable 2> /dev/null \
       | grep '/generator-[^/]*$' \
       | while read line; do basename "$line"; done \
       | sort -u \
-  > "$pluginDir"/generators-list.txt
+  > "$__yeoman_generatorListFile"
 
-  chmod u=rw,g=r,o= "$pluginDir"/generators-list.txt
+  chmod u=rw,g=r,o= "$__yeoman_generatorListFile"
 }
 
 # Get the list of global generator and store it in a file
-(__yo_getGlobalGenerators "$0" &)
+(__yo_getGlobalGenerators "$__yeoman_pluginDir" &)
 
 
 
