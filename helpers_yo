@@ -39,7 +39,7 @@ __yo_getGenerators() {
 # @description fetch local (if a directory if given) or global generators
 # @return    stream
 __yo_setGlobalGenerators() {
-  npm list --global --parseable 2> /dev/null \
+  npm list --global --parseable --silent \
       | grep '/generator-[^/]*$' \
       | while read line; do __yo_getGeneratorMetadata "$line"; done \
       | sort -u \
