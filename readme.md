@@ -39,6 +39,10 @@ You can use `zsh` completion by typing `tab` after the three commands `yo`, `bow
 
 ### `yo` completion
 
+The list of generators is build in two steps:
+1. global generators: a list is _build at shell start-up_. So the list might be incomplete till the listing is finish (take few seconds).
+2. local generators: are available when _current directory is a node project_. This means `npm root` give a path to a `nodes_modules/` that must exists.
+
 #### List installed generators
 
 ```bash
