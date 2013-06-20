@@ -74,7 +74,12 @@ __yo_getDescription() {
   echo "$description"
 }
 
-
+# @description Get package name and description from local or global packages:
+#              * a path is given, look for generators locally
+#              * no path given, get information from generators listed at startup
+#                         (i.e. global)
+# @param    $1|modulePath  path to node_modules/ directory, to look for packages
+# @return    void
 __yo_getSuggestion() {
     modulePath="${1:-DEBUG_ME}"
 
