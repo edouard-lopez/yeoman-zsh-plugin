@@ -43,15 +43,12 @@ You can use `zsh` completion by typing `tab` after the three commands `yo`, `bow
 
 ```bash
 $ yo<tab>
-ember                                     -- Ember - JavaScript Application Framework
-generator-angular                         -- Yeoman generator for AngularJS
-generator-backbone-amd                    -- generator-backbone-amd
-generator-bootstrap                       -- Yeoman generator for Twitter Bootstrap
-generator-karma                           -- Yeoman generator for Karma
-generator-mocha         generator-mocha   -- Yeoman generator for Mocha
-generator-testacular                      -- Yeoman generator for Testacular
-generator-webapp        generator-webapp  -- Default Yeoman generator for scaffolding out a front-end web app
-yeoman-generator        yeoman-generator  -- Rails-inspired generator system that provides scaffolding for your apps
+angular            -- Yeoman generator for AngularJS
+backbone-amd       -- generator-backbone-amd
+bootstrap          -- Yeoman generator for Twitter Bootstrap
+karma              -- Yeoman generator for Karma
+mocha              -- Yeoman generator for Mocha
+webapp             -- Default Yeoman generator for scaffolding out a front-end web app
 ```
 
 #### List of options
