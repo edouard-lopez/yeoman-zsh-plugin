@@ -1,7 +1,6 @@
-# Location of this plugin
-__yeoman_pluginDir="$(dirname "$0")"
 # location of generator-list file
 __yeoman_generatorListFile="$__yeoman_pluginDir"/generators-list.txt
+export __yeoman_generatorListFile
 
 
 # location of npm cache (@see {@link https://npmjs.org/doc/cache.html}) or

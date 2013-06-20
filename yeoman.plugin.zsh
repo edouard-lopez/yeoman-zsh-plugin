@@ -1,5 +1,6 @@
 # Location of this plugin
 __yeoman_pluginDir="$(dirname "$0")"
+export __yeoman_pluginDir
 . "$__yeoman_pluginDir"/helpers_yo
 
 
