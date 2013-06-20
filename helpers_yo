@@ -63,9 +63,9 @@ __yo_getGeneratorMetadata() {
   package="$(basename "$generatorPath")"
   pkg="${package//generator-}"
   description="$(__yo_getDescription "$package" &)"
-  suggestion=$(printf "%s:%s" "$pkg" "$description")
+  metadata=$(printf "%s:%s" "$pkg" "$description")
 
-  echo "$suggestion"
+  echo "$metadata"
 }
 
 
