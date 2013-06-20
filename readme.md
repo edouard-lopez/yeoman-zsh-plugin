@@ -105,7 +105,7 @@ $ bower list<tab><tab>
 
     todo
 
-## Aliases (old ones)
+## Aliases (for _yeoman_)
 
 Old aliases have been updated to *use new yeoman's `≥1.0` commands*, i.e. `yo`, `bower`, `grunt` :
 
@@ -131,7 +131,7 @@ Old aliases have been updated to *use new yeoman's `≥1.0` commands*, i.e. `yo`
     alias ymlu='bower lookup'
     ```
 
-## Aliases (new one)
+## Aliases (for _grunt_ and _bower_)
 
 **New aliases**  have been added to be **more intituive** with yeoman version `≥1.0` commands (i.e. `yo`, `bower` and `grunt`). They respectly use the following prefixes:
 
