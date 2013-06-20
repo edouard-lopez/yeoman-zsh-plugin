@@ -55,8 +55,8 @@ webapp             -- Default Yeoman generator for scaffolding out a front-end w
 
 ```bash
 $ yo -<tab><tab>
---help                  -- show the help message and quit
---version               -- show version information and quit
+--help             -- show the help message and quit
+--version          -- show version information and quit
 ```
 
 ### `bower` completion
@@ -65,40 +65,40 @@ $ yo -<tab><tab>
 
 ```bash
 $ bower<tab>
-cache-clean      -- Cleans all the bower cache or the specified packages cache
-completion       -- Tab Completion for bower
-info             -- Version info and description of a particular package.
-init             -- Creates a component.json file based on answers to questions
-install          -- Installs a browser package locally into a components directory
-link             -- The link functionality allows developers to easily test their packages. Linking is a two-step process.
-list         ls  -- Lists all packages
-lookup           -- Looks up a package url by name
-register         -- Register a package.
-search           -- Finds all packages or a specific package.
-uninstall        -- Uninstalls a browser package locally from your components directory
-update           -- Refreshes a package install
+cache-clean        -- Cleans all the bower cache or the specified packages cache
+completion         -- Tab Completion for bower
+info               -- Version info and description of a particular package.
+init               -- Creates a component.json file based on answers to questions
+install            -- Installs a browser package locally into a components directory
+link               -- The link functionality allows developers to easily test their packages. Linking is a two-step process.
+list         ls    -- Lists all packages
+lookup             -- Looks up a package url by name
+register           -- Register a package.
+search             -- Finds all packages or a specific package.
+uninstall          -- Uninstalls a browser package locally from your components directory
+update             -- Refreshes a package install
 ```
 
 #### List of options are available both for top level and subcommands :
 
 ```bash
 $ bower<tab>
---help                  -- Show the help message and quit
---no-color              -- Do not print colors (available in all commands)
---version               -- Show version information and quit
+--help             -- Show the help message and quit
+--no-color         -- Do not print colors (available in all commands)
+--version          -- Show version information and quit
 ```
 
 #### Subcommand options:
 
 ```bash
 $ bower list<tab><tab>
---help                  -- Show the help message and quit
---map                   -- Generates a deep dependency JSON source mapping
---no-color              -- Do not print colors (available in all commands)
---offline               -- Avoid checking for newer versions
---paths                 -- Generates a simple JSON source mapping
---sources               -- Generates list of source files in order of dependency
---version               -- Show version information and quit
+--help             -- Show the help message and quit
+--map              -- Generates a deep dependency JSON source mapping
+--no-color         -- Do not print colors (available in all commands)
+--offline          -- Avoid checking for newer versions
+--paths            -- Generates a simple JSON source mapping
+--sources          -- Generates list of source files in order of dependency
+--version          -- Show version information and quit
 ```
 
 ### `grunt` completion
