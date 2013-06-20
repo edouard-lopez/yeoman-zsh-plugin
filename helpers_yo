@@ -30,6 +30,20 @@ __yo_getGeneratorList() {
 # @description fetch local (if a directory if given) or global generators
 # @param    $1|$workingDir  working directory for local generator look-up
 # @return    stream
+__yo_getGenerators() {
+    workingDir=$1
+
+    if [[ -n "$workingDir" ]]; then
+      npm list --parseable 2> /dev/null | grep generator
+    else
+      __yo_getSuggestion
+    fi
+}
+
+
+# @description fetch local (if a directory if given) or global generators
+# @param    $1|$workingDir  working directory for local generator look-up
+# @return    stream
 __yo_getGlobalGenerators() {
   pluginDir="$1"
 
@@ -83,23 +97,6 @@ __yo_getSuggestion() {
     else
       while IFS= read -r suggestion; do
         generator+=( "$suggestion" )
-      done < __yeoman_generatorListFile
-    fi
-}
-
-
-# @description fetch local (if a directory if given) or global generators
-# @param    $1|$workingDir  working directory for local generator look-up
-# @return    stream
-__yo_getGenerators() {
-    workingDir=$1
-
-    if [[ -n "$workingDir" ]]; then
-      npm list --parseable 2> /dev/null | grep generator
-    else
-        npm list --global --parseable 2> /dev/null \
-            | grep '/generator-' \
-            | while read line; do __yo_getSuggestion $line; done \
-            | sort -u
+      done < $__yeoman_generatorListFile
     fi
 }
