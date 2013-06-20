@@ -42,11 +42,8 @@ __yo_getGenerators() {
 
 
 # @description fetch local (if a directory if given) or global generators
-# @param    $1|$workingDir  working directory for local generator look-up
 # @return    stream
-__yo_getGlobalGenerators() {
-  pluginDir="$1"
-
+__yo_setGlobalGenerators() {
   npm list --global --parseable 2> /dev/null \
       | grep '/generator-[^/]*$' \
       | while read line; do  __yo_getGeneratorMetadata "$line"; done \
@@ -56,9 +53,10 @@ __yo_getGlobalGenerators() {
   chmod u=rw,g=r,o= "$__yeoman_generatorListFile"
 }
 
+
 # @description Get generator name and description
 # @param    $1|generatorPath  global path as return by 'npm list --global'
-#           (@see __yo_getGlobalGenerators)
+#           (@see __yo_setGlobalGenerators)
 # @return    string
 __yo_getGeneratorMetadata() {
   generatorPath="$1"

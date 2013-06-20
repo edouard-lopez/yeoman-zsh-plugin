@@ -5,7 +5,7 @@ export __yeoman_pluginDir
 
 
 # Get the list of global generator and store it in a file
-(__yo_getGlobalGenerators "$__yeoman_pluginDir" &)
+(__yo_setGlobalGenerators &)
 
 
 
