@@ -15,7 +15,6 @@ __yo_getGeneratorList() {
 
     generator=( # default generator
         webapp:'Default Yeoman generator for scaffolding out a front-end web app'
-        test:'debugging value'
     )
     __yo_getGenerators
 }
