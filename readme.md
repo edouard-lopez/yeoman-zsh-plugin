@@ -8,12 +8,12 @@ This is a [Yeoman](http://yeoman.io/) plugin for [Oh My ZSH](https://github.com/
 
 ## Installation
 
-1. In the command line, navigate to the folder:
+1. In the command line, change to _oh-my-zsh_'s directory :
 
     ```
     cd ~/.oh-my-zsh/custom/plugins/
     ```
-2. Clone the repository into a new folder called `yeoman`:
+2. Clone the repository into a new into `yeoman` directory:
 
     ```
     git clone git@github.com:edouard-lopez/yeoman-zsh-plugin.git yeoman
@@ -21,13 +21,13 @@ This is a [Yeoman](http://yeoman.io/) plugin for [Oh My ZSH](https://github.com/
 
 ## Configuration
 
-1. Edit your `~/.zshrc` and add `yeoman` to the list of plugins to load:
+1. Edit your `~/.zshrc` and add `yeoman` – same as clone directory– to the list of plugins to enable:
 
     ```
     plugins=( ... yeoman )
     ```
 
-2. Then, restart your command line application. Alternatively, you can source your current shell to see changes :
+2. Then, restart your terminal application to **refresh context** and use the plugin. Alternatively, you can source your current shell configuration:
 
     ```
     source ~/.zshrc
