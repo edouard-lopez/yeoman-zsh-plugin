@@ -79,9 +79,8 @@ __yo_getDescription() {
 
 # @description Get package name and description from local or global packages:
 #              * a path is given, look for generators locally
-#              * no path given, get information from generators listed at startup
-#                         (i.e. global)
-# @param    $1|modulePath  path to node_modules/ directory, to look for packages
+#              * no path given, get generators listed at startup (i.e. global)
+# @param    $1|modulePath  path to node_modules/ directory
 # @return    void
 __yo_getGenerators() {
   # local generators suggestions
