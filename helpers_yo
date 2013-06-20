@@ -46,7 +46,7 @@ __yo_getGenerators() {
 __yo_setGlobalGenerators() {
   npm list --global --parseable 2> /dev/null \
       | grep '/generator-[^/]*$' \
-      | while read line; do  __yo_getGeneratorMetadata "$line"; done \
+      | while read line; do __yo_getGeneratorMetadata "$line"; done \
       | sort -u \
   > "$__yeoman_generatorListFile"
 
