@@ -40,9 +40,9 @@ __yo_getGenerators() {
 # @return    stream
 __yo_setGlobalGenerators() {
   npm list --global --parseable --silent \
-      | grep '/generator-[^/]*$' \
-      | while read line; do __yo_getGeneratorMetadata "$line"; done \
-      | sort -u \
+    | grep '/generator-[^/]*$' \
+    | while read line; do __yo_getGeneratorMetadata "$line"; done \
+    | sort -u \
   > "$__yeoman_generatorListFile"
 
   chmod u=rw,g=r,o= "$__yeoman_generatorListFile"
