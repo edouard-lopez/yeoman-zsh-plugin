@@ -17,22 +17,11 @@ __yo_getGeneratorList() {
         webapp:'Default Yeoman generator for scaffolding out a front-end web app'
         test:'debugging value'
     )
-    __yo_getGenerators # global
-    # __yo_getGenerators # local
+    __yo_getGenerators
 }
 
 
-# @description fetch local (if a directory if given) or global generators
-# @param    $1|$workingDir  working directory for local generator look-up
-# @return    stream
-__yo_getGenerators() {
-    workingDir=$1
 
-    if [[ -n "$workingDir" ]]; then
-      npm list --parseable 2> /dev/null | grep generator
-    else
-      __yo_getSuggestion
-    fi
 }
 
 
@@ -80,22 +69,20 @@ __yo_getDescription() {
 #                         (i.e. global)
 # @param    $1|modulePath  path to node_modules/ directory, to look for packages
 # @return    void
-__yo_getSuggestion() {
-    modulePath="${1:-DEBUG_ME}"
+__yo_getGenerators() {
+  # local generators suggestions
+  while IFS= read -r suggestion; do
+    # printf "%s\n" "$suggestion"
+    pkg="${suggestion%%:*}" # take only the key
+    (( $+blacklist[(r)$pkg] )) && continue # skip blacklisted items
+    (( $+generator[(r)$pkg] )) && continue # skip already present items
+    generator+=( "$suggestion" )
+  done < <( __yo_getLocalGenerators)
 
-    if [[ -d "$modulePath" ]]; then
-      pkg="$(basename "$modulePath")"
-      (( $+blacklist[(r)$pkg] )) && continue # skip blacklisted items
-      package="${pkg//$k}"
-      versions=( "$package"/ ) # limit to directories
-      description="$(__yo_getDescription "$modulePath")"
-      suggestion=$(printf "%s:%s" "$package" "$description")
-      generator+=( "$suggestion" )
-    else
-      while IFS= read -r suggestion; do
-        pkg="${suggestion%%:*}" # take only the key
-        (( $+blacklist[(r)$pkg] )) && continue # skip blacklisted items
-        generator+=( "$suggestion" )
-      done < "$__yeoman_generatorListFile"
-    fi
+  # Global generators suggestions
+  while IFS= read -r suggestion; do
+    pkg="${suggestion%%:*}" # take only the key
+    (( $+blacklist[(r)$pkg] )) && continue # skip blacklisted items
+    generator+=( "$suggestion" )
+  done < "$__yeoman_generatorListFile"
 }
