@@ -9,7 +9,7 @@ export __yeoman_generatorListFile
 # generators we are looking for
 local -a keywords; keywords=( 'yeoman' '-generator' 'generator-' )
 # terms to blacklist/skip
-local -a blacklist; blacklist=('yeoman-generator')
+local -a blacklist; blacklist=('yeoman-generator' 'webapp')
 
 
 
@@ -94,6 +94,8 @@ __yo_getSuggestion() {
       generator+=( "$suggestion" )
     else
       while IFS= read -r suggestion; do
+        pkg="${suggestion%%:*}" # take only the key
+        (( $+blacklist[(r)$pkg] )) && continue # skip blacklisted items
         generator+=( "$suggestion" )
       done < $__yeoman_generatorListFile
     fi
