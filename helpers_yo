@@ -21,7 +21,21 @@ __yo_getGeneratorList() {
 }
 
 
+# @description fetch local
+# @param    $1|$modulePath  Fetch local generators
+# @return    void
+__yo_getLocalGenerators() {
+  local moduleDir="$(npm root)"
+  local wd="$(pwd)"
 
+  [[ ! -d "$moduleDir" ]] && break
+
+  cd "$(npm root)"
+  npm list --parseable -silent \
+    | grep '/generator-[^/]*$' \
+    | while read line; do __yo_getGeneratorMetadata "$line"; done \
+    | sort -u
+  cd "$wd"
 }
 
 
