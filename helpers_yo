@@ -76,7 +76,7 @@ __yo_getDescription() {
   packageInfo="$1"
 
   description="$(npm view --silent "$packageInfo" description &)"
-  echo "'$description'"
+  echo "$description"
 }
 
 
@@ -97,6 +97,6 @@ __yo_getSuggestion() {
         pkg="${suggestion%%:*}" # take only the key
         (( $+blacklist[(r)$pkg] )) && continue # skip blacklisted items
         generator+=( "$suggestion" )
-      done < $__yeoman_generatorListFile
+      done < "$__yeoman_generatorListFile"
     fi
 }
