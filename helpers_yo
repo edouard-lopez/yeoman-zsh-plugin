@@ -39,8 +39,8 @@ __yo_getLocalGenerators() {
 }
 
 
-# @description fetch local (if a directory if given) or global generators
-# @return    stream
+# @description Store global generators in YEOMAN_PLUGIN_DIR/GENERATOR_LIST.txt
+# @return    void
 __yo_setGlobalGenerators() {
   npm list --global --parseable --silent \
     | grep '/generator-[^/]*$' \
