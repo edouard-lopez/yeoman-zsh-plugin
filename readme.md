@@ -16,7 +16,7 @@ This is a [Yeoman](http://yeoman.io/) plugin for [Oh My ZSH](https://github.com/
 2. Clone the repository into a new into `yeoman` directory:
 
     ```
-    git clone git@github.com:edouard-lopez/yeoman-zsh-plugin.git yeoman
+    git clone https://github.com/edouard-lopez/yeoman-zsh-plugin.git yeoman
     ```
 
 ## Configuration
