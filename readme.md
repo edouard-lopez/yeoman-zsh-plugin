@@ -8,26 +8,35 @@ This is a [Yeoman](http://yeoman.io/) plugin for [Oh My ZSH](https://github.com/
 
 ## Installation
 
-1. In the command line, change to _oh-my-zsh_'s directory :
+### antigen
+
+If you're using [Antigen](https://github.com/zsh-lovers/antigen):
+
+1. Add `antigen bundle edouard-lopez/yeoman-zsh-plugin` to your `.zshrc` where you've listed your other plugins.
+
+2. Restart your terminal application to **refresh context** and use the plugin. Alternatively, you can just run `antigen bundle edouard-lopez/yeoman-zsh-plugin` to have antigen load the new plugin.
+
+### oh-my-zsh
+
+If you're using oh-my-zsh:
+
+1. In the command line, change to _oh-my-zsh_'s custom plugin directory :
 
     ```
     cd ~/.oh-my-zsh/custom/plugins/
     ```
-2. Clone the repository into a new into `yeoman` directory:
+2. Clone the repository into a new `yeoman` directory:
 
     ```
     git clone https://github.com/edouard-lopez/yeoman-zsh-plugin.git yeoman
     ```
-
-## Configuration
-
-1. Edit your `~/.zshrc` and add `yeoman` – same as clone directory– to the list of plugins to enable:
+3. Edit your `~/.zshrc` and add `yeoman` – same as clone directory– to the list of plugins to enable:
 
     ```
     plugins=( ... yeoman )
     ```
 
-2. Then, restart your terminal application to **refresh context** and use the plugin. Alternatively, you can source your current shell configuration:
+4. Then, restart your terminal application to **refresh context** and use the plugin. Alternatively, you can source your current shell configuration:
 
     ```
     source ~/.zshrc
