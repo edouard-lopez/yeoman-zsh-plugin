@@ -4,7 +4,7 @@ This is a [Yeoman](http://yeoman.io/) plugin for [Oh My ZSH](https://github.com/
 * aliases ;
 * **zsh autocomplete** functions and options.
 
-`Note:` originally a fork of [@sayanee/yeoman-oh-my-zsh](sayanee/yeoman-oh-my-zsh) (for version `≤0.9.6`). It's has since been _fully redesign_ to work with yeoman `≥v1.0`.
+`Note:` originally a fork of [@sayanee/yeoman-oh-my-zsh](sayanee/yeoman-oh-my-zsh) (for version `≤0.9.6`). It's has since been _fully redesigned_ to work with yeoman `≥v1.0`.
 
 ## Installation
 
@@ -14,11 +14,11 @@ If you're using [Antigen](https://github.com/zsh-lovers/antigen):
 
 1. Add `antigen bundle edouard-lopez/yeoman-zsh-plugin` to your `.zshrc` where you've listed your other plugins.
 
-2. Restart your terminal application to **refresh context** and use the plugin. Alternatively, you can just run `antigen bundle edouard-lopez/yeoman-zsh-plugin` to have antigen load the new plugin.
+2. Restart your terminal application to **refresh context** and use the plugin. Alternatively, you can run `antigen bundle edouard-lopez/yeoman-zsh-plugin` in a running shell to have antigen load the new plugin.
 
 ### oh-my-zsh
 
-If you're using oh-my-zsh:
+If you're using [oh-my-zsh](github.com/robbyrussell/oh-my-zsh):
 
 1. In the command line, change to _oh-my-zsh_'s custom plugin directory :
 
@@ -35,7 +35,6 @@ If you're using oh-my-zsh:
     ```
     plugins=( ... yeoman )
     ```
-
 4. Then, restart your terminal application to **refresh context** and use the plugin. Alternatively, you can source your current shell configuration:
 
     ```
@@ -44,13 +43,13 @@ If you're using oh-my-zsh:
 
 ## Commands Completion
 
-You can use `zsh` completion by typing `tab` after the three commands `yo`, `bower` and ~~`grunt`~~ and get some insight of the possibility:
+You can use `zsh` completion by typing `tab` after the three commands `yo`, `bower` and ~~`grunt`~~ to get some insight of the possibilities:
 
 ### `yo` completion
 
-The list of generators is build in two steps:
-1. global generators: a list is _build at shell start-up_. So the list might be incomplete till the listing is finish (take few seconds).
-2. local generators: are available when _current directory is a node project_. This means `npm root` give a path to a `nodes_modules/` that must exists.
+The list of generators is built in two steps:
+1. global generators: a list is _built at shell start-up_. The list may be incomplete until the listing is finished (this can take a few seconds).
+2. local generators: are available when _current directory is a node project_. This means `npm root` returns a path to a `nodes_modules/` directory that must exist.
 
 #### List installed generators
 
@@ -146,7 +145,7 @@ Old aliases have been updated to *use new yeoman's `≥1.0` commands*, i.e. `yo`
 
 ## Aliases (for _grunt_ and _bower_)
 
-**New aliases**  have been added to be **more intituive** with yeoman version `≥1.0` commands (i.e. `yo`, `bower` and `grunt`). They respectly use the following prefixes:
+**New aliases** have been added to be **more intituive** with yeoman version `≥1.0` commands (i.e. `yo`, `bower` and `grunt`). They respectively use the following prefixes:
 
 ### `g...` for `grunt` commands :
 
