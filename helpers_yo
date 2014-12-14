@@ -41,6 +41,7 @@ __yo_getLocalGenerators() {
 # @description Store global generators in YEOMAN_PLUGIN_DIR/GENERATOR_LIST.txt
 # @return    void
 __yo_setGlobalGenerators() {
+    [[ -e $__yeoman_generatorListFile ]] && rm -rf $__yeoman_generatorListFile
   npm list --global --parseable --silent \
     | grep '/generator-[^/]*$' \
     | while read line; do __yo_getGeneratorMetadata "$line"; done \
