@@ -47,20 +47,18 @@ You can use `zsh` completion by typing `tab` after the three commands `yo`, `bow
 
 ### `yo` completion
 
-The list of generators is built in two steps:
-1. global generators: a list is _built at shell start-up_. The list may be incomplete until the listing is finished (this can take a few seconds).
-2. local generators: are available when _current directory is a node project_. This means `npm root` returns a path to a `nodes_modules/` directory that must exist.
+The list of generators is built using the native [`--generators` option](https://github.com/yeoman/yo#options)  
 
 #### List installed generators
 
 ```bash
 $ yo<tab>
-angular            -- Yeoman generator for AngularJS
-backbone-amd       -- generator-backbone-amd
-bootstrap          -- Yeoman generator for Twitter Bootstrap
-karma              -- Yeoman generator for Karma
-mocha              -- Yeoman generator for Mocha
-webapp             -- Default Yeoman generator for scaffolding out a front-end web app
+angular                          -- angular's generator
+gulp-webapp                      -- gulp-webapp's generator
+karma                            -- karma's generator
+leaflet                          -- leaflet's generator
+mocha                            -- mocha's generator
+webapp                           -- Default Yeoman generator for scaffolding out a front-end web app
 ```
 
 #### List of options

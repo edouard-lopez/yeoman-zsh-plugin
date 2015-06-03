@@ -5,6 +5,7 @@ export __yeoman_generatorListFile
 
 # terms to blacklist/skip
 local -a blacklist; blacklist=('yeoman-generator' 'webapp')
+local -a show_description; show_description='false'
 
 
 
@@ -20,33 +21,11 @@ __yo_getGeneratorList() {
 }
 
 
-# @description fetch local
-# @param    $1|$modulePath  Fetch local generators
-# @return    void
-__yo_getLocalGenerators() {
-  local moduleDir="$(npm root)"
-  local wd="$(pwd)"
-
-  [[ ! -d "$moduleDir" ]] && break
-
-  cd "$(npm root)"
-  npm list --parseable -silent \
-    | grep '/generator-[^/]*$' \
-    | while read line; do __yo_getGeneratorMetadata "$line"; done \
-    | sort -u
-  cd "$wd"
-}
-
-
 # @description Store global generators in YEOMAN_PLUGIN_DIR/GENERATOR_LIST.txt
 # @return    void
 __yo_setGlobalGenerators() {
-    [[ -e $__yeoman_generatorListFile ]] && rm -rf $__yeoman_generatorListFile
-  npm list --global --parseable --silent \
-    | grep '/generator-[^/]*$' \
-    | while read line; do __yo_getGeneratorMetadata "$line"; done \
-    | sort -u \
-  > "$__yeoman_generatorListFile"
+  [[ -e $__yeoman_generatorListFile ]] && rm -rf $__yeoman_generatorListFile
+  __yo_get_installed_generators | sort -u > "$__yeoman_generatorListFile"
 
   chmod u=rw,g=r,o= "$__yeoman_generatorListFile"
 }
@@ -60,10 +39,13 @@ __yo_getGeneratorMetadata() {
   generatorPath="$1"
   package="$(basename "$generatorPath")"
   pkg="${package//generator-}"
-  description="$(__yo_getDescription "$package" &)"
-  metadata=$(printf "%s:%s" "$pkg" "$description")
+  description="${pkg}'s generator"
 
-  echo "$metadata"
+  if [[ $show_description == 'true' ]]; then
+    description="$(time __yo_getDescription "$package" &)"
+  fi
+
+  echo $(printf "%s:%s" "$pkg" "$description")
 }
 
 
@@ -75,6 +57,10 @@ __yo_getDescription() {
 
   description="$(npm view --silent "$packageInfo" description &)"
   echo "$description"
+}
+
+__yo_get_installed_generators() {
+  command yo --generators | while read line; do __yo_getGeneratorMetadata "$line"; done
 }
 
 # @description Get package name and description from local or global packages:
@@ -90,12 +76,5 @@ __yo_getGenerators() {
     (( $+blacklist[(r)$pkg] )) && continue # skip blacklisted items
     (( $+generator[(r)$pkg] )) && continue # skip already present items
     generator+=( "$suggestion" )
-  done < <( __yo_getLocalGenerators)
-
-  # Global generators suggestions
-  while IFS= read -r suggestion; do
-    pkg="${suggestion%%:*}" # take only the key
-    (( $+blacklist[(r)$pkg] )) && continue # skip blacklisted items
-    generator+=( "$suggestion" )
-  done < "$__yeoman_generatorListFile"
+  done < <( __yo_get_installed_generators)
 }
