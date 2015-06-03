@@ -14,8 +14,14 @@ local -A opt_args
 
 local -a arguments
 arguments=(
-    '--help[show the help message and quit]'
-    '--version[show version information and quit]'
+    "--help[Print this info and generator's options and usage]"
+    '-f[Overwrite files that already exist]'
+    '--force[Overwrite files that already exist]'
+    '--version[Print version]'
+    '--no-color[Disable colors]'
+    '--insight[Enable anonymous tracking]'
+    '--no-insight[Disable anonymous tracking]'
+    '--generators[Print available generators]'
     '*:: :->generator'
 )
 

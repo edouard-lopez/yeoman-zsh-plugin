@@ -67,6 +67,13 @@ webapp                           -- Default Yeoman generator for scaffolding out
 $ yo -<tab><tab>
 --help             -- show the help message and quit
 --version          -- show version information and quit
+  --help         # Print this info and generator's options and usage
+  -f, --force    # Overwrite files that already exist
+  --version      # Print version
+  --no-color     # Disable colors
+  --[no-]insight # Toggle anonymous tracking
+  --generators   # Print available generators
+
 ```
 
 ### `bower` completion
