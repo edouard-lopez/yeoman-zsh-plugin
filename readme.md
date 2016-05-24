@@ -10,7 +10,7 @@ This is a [Yeoman](http://yeoman.io/) plugin for [Oh My ZSH](https://github.com/
 
 ### antigen
 
-If you're using [Antigen](https://github.com/zsh-lovers/antigen):
+If you're using [Antigen](https://github.com/zsh-users/antigen):
 
 1. Add `antigen bundle edouard-lopez/yeoman-zsh-plugin` to your `.zshrc` where you've listed your other plugins.
 
