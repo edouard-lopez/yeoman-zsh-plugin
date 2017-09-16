@@ -24,8 +24,7 @@ __yo_getGeneratorList() {
 # @description Store global generators in YEOMAN_PLUGIN_DIR/GENERATOR_LIST.txt
 # @return    void
 __yo_setGlobalGenerators() {
-  [[ -e $__yeoman_generatorListFile ]] && rm -rf $__yeoman_generatorListFile
-  __yo_get_installed_generators | sort -u > "$__yeoman_generatorListFile"
+  __yo_get_installed_generators | sort -u >| "$__yeoman_generatorListFile"
 
   chmod u=rw,g=r,o= "$__yeoman_generatorListFile"
 }
@@ -76,5 +75,5 @@ __yo_getGenerators() {
     (( $+blacklist[(r)$pkg] )) && continue # skip blacklisted items
     (( $+generator[(r)$pkg] )) && continue # skip already present items
     generator+=( "$suggestion" )
-  done < <( __yo_get_installed_generators)
+  done < "$__yeoman_generatorListFile"
 }
