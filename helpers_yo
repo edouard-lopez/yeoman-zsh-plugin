@@ -59,7 +59,12 @@ __yo_getDescription() {
 }
 
 __yo_get_installed_generators() {
-  command yo --generators | while read line; do __yo_getGeneratorMetadata "$line"; done
+  local REMOVE_TITLE="1"
+  local YO_VERSION=$(yo --version)
+  if [[ "$(printf '%s\n' "$YO_VERSION" "1.6.0" | sort -V | head -n1)" == "1.6.0" ]]; then
+    REMOVE_TITLE="2"
+  fi
+  command yo --generators | tr -s '\n\n' | tr -d ' ' | tail -n +$REMOVE_TITLE | while read line; do __yo_getGeneratorMetadata "$line"; done
 }
 
 # @description Get package name and description from local or global packages:
